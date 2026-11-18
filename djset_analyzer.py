@@ -13,6 +13,14 @@ import os
 from pydub import AudioSegment
 import time
 
+# Windows consoles/pipes may default to a legacy codepage (e.g. cp1252)
+# that can't encode the emoji used in output.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding='utf-8', errors='replace')
+    except (AttributeError, ValueError):
+        pass
+
 class SamplingDJSetAnalyzer:
     def __init__(self, api_key):
         self.api_key = api_key

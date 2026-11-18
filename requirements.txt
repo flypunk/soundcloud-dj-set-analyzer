@@ -1,0 +1,7 @@
+requests>=2.31
+yt-dlp>=2025.1.1
+pydub==0.25.1
+# audioop was removed from the Python stdlib in 3.13; pydub still imports it
+audioop-lts>=0.2.1; python_version >= "3.13"
+
+# Also requires FFmpeg on PATH (see README)
